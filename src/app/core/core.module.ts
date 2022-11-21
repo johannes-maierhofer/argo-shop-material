@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HeaderComponent } from './components/header/header.component';
 import { MaterialModule } from './material/material.module';
+import { HeaderComponent } from './ui/components/header/header.component';
 
 @NgModule({
   declarations: [

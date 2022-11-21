@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { concat, Subscription } from 'rxjs';
-import { HeaderService } from '../../services/header.service';
+import { HeaderService } from '../../../services/header.service';
 
 @Component({
   selector: 'app-header',
