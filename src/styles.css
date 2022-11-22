@@ -2,3 +2,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error.mat-snack-bar-container {
+  background: #ff4444;
+  color: white;
+}
+
+.success.mat-snack-bar-container {
+  background: #00C851;
+  color: white;
+}
+
+.mat-flat-button.mat-success,
+.mat-raised-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #fff
+}
+
+.mat-flat-button.mat-success,
+.mat-raised-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  background-color: #00C851
+}
