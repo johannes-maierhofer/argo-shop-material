@@ -1,8 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Observable } from "rxjs";
-import { ResultStatusError } from "../result-status-error";
-import { isResultEnvelope, ResultStatus } from './../result';
+import { ResultStatusError } from "../models/result-status-error";
+import { isResultEnvelope, ResultStatus } from './../models/result';
 
 @Injectable()
 export class ResultEnvelopeInterceptor implements HttpInterceptor {
