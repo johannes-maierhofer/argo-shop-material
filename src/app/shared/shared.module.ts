@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { TitleComponent } from './components/title/title.component';
 import { WordWrapPipe } from './pipes/word-wrap.pipe';
 
@@ -12,6 +12,9 @@ import { WordWrapPipe } from './pipes/word-wrap.pipe';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    WordWrapPipe
   ]
 })
 export class SharedModule { }
