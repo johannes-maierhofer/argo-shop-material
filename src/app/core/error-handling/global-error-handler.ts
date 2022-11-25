@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { ErrorHandler, Injectable, NgZone } from "@angular/core";
-import { ResultStatusError } from "../http/result-status-error";
+import { ResultStatusError } from "../http/models/result-status-error";
 import { NotifierService } from "../notifications/notifier.service";
 import { ErrorInfo } from "./error-info";
 

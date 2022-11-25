@@ -1,4 +1,4 @@
-import { ErrorInfo } from "../error-handling/error-info";
+import { ErrorInfo } from "../../error-handling/error-info";
 import { ResultStatus } from "./result";
 
 export class ResultStatusError extends Error {
