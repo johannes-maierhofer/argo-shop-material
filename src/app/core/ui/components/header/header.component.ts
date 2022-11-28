@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { concat, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 import { HeaderService } from '../../../services/header.service';
 
 @Component({
@@ -17,28 +18,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
   showButtons: boolean = true;
 
   constructor(
-    // private session: SessionService,
+    public authService: AuthenticationService,
     private snackBar: MatSnackBar,
     // private cart: CartService,
-    private header: HeaderService,
-    // private auth: AuthenticationService
+    private header: HeaderService
   ) { }
 
   ngOnInit() {
-    // this.session.isCustomerLoggedIn()
-    //   .subscribe(
-    //     () => {
-    //       this.isLoggedIn = true;
-    //       this.session.setLoggedInStatus(true);
-    //     }
-    //   );
+    this.subscriptions.add(this.authService.isLoggedIn$
+      .subscribe(value => {
+          this.isLoggedIn = value;
+        }
+      ));
 
     // this.session.loggedInStatus$.subscribe(status => this.isLoggedIn = status);
 
     this.subscriptions.add(this.header.showHeaderButtons$
       .subscribe(visible => this.showButtons = visible)
     );
-
 
     // this.cart.cartValue.subscribe(cart => this.cartAmount = cart.itemCount);
   }
@@ -48,15 +45,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    concat(
-      // this.session.logout(),
-      // this.auth.getClientSession()
-    ).subscribe(
-      () => {
+    this.authService.logout()
+      .subscribe(() => {
         this.snackBar.open('You have been logged out.', 'Close', { duration: 4000 });
-        // this.session.setLoggedInStatus(false);
-      },
-      err => this.snackBar.open('There was a problem logging you out.', 'Close', { duration: 4000 })
-    );
+      });
   }
 }

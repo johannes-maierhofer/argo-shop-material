@@ -1,8 +1,8 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     // private session: SessionService,
     private formBuilder: FormBuilder,
     private header: HeaderService,
-    private location: Location
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -31,22 +31,12 @@ export class LoginComponent implements OnInit {
   login() {
     const credentials = this.loginForm.value;
 
-    // this.authService.login(
-    //   credentials.email,
-    //   credentials.password
-    // ).subscribe(
-    //   () => {
-    //     this.session.setLoggedInStatus(true);
-    //     this.location.back();
-    //   },
-    //   err => {
-    //     this.snackBar.open(
-    //       'Login failed. Check your login credentials.',
-    //       'Close',
-    //       { duration: 6000 });
-
-    //     this.loginForm.patchValue({ password: '' });
-    //   }
-    // );
+    this.authService.login(
+      credentials.email ?? '',
+      credentials.password ?? ''
+    ).subscribe(result => {
+      console.log('Successfully logged in: ' + JSON.stringify(result));
+      this.router.navigateByUrl('');
+    });
   }
 }
