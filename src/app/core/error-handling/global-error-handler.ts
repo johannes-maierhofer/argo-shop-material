@@ -34,7 +34,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     // You need to explicitly tell Angular to run the pop call within the context of a zone.
     // see https://stackoverflow.com/questions/51444006/why-does-toaster-service-inside-global-error-handler-wont-work-in-angular4-5-6
     this.ngZone.run(() => {
-      this.notifier.showError(errorInfo.message || "This operation resulted in an error", errorInfo.header);
+      this.notifier.showError(errorInfo.message || "This operation resulted in an error", 'Ok', errorInfo.header);
     });
   }
 }
