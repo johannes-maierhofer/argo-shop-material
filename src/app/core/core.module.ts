@@ -1,8 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from './material/material.module';
+import { throwIfAlreadyLoaded } from './guards/module-import.guard';
 import { NotifierComponent } from './notifications/components/notifier.component';
 import { HeaderComponent } from './ui/components/header/header.component';
 
@@ -14,12 +18,20 @@ import { HeaderComponent } from './ui/components/header/header.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    MaterialModule,
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatSnackBarModule,
+    MatButtonModule
   ],
   exports: [
     HeaderComponent,
     NotifierComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    // prevent the module being imported more than once
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
+  }
+}
