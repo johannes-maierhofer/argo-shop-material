@@ -14,7 +14,7 @@ export class ResultEnvelopeInterceptor implements HttpInterceptor {
       if (event instanceof HttpResponse) {
         if (isResultEnvelope(event.body)) {
           const status: ResultStatus = event.body.status;
-          if (status === ResultStatus.Success) {
+          if (status === ResultStatus.Ok) {
             // unwrap data from envelope
             if (event.body.hasOwnProperty('data')) {
               return event.clone({ body: event.body.data });

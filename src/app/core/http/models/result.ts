@@ -1,11 +1,11 @@
 export enum ResultStatus {
-  Success = 1,
-  NotFound = 2,
-  Invalid = 3,
-  Gone = 4,
-  Error = 5
+  Ok = 200,
+  NotFound = 404,
+  Invalid = 400,
+  Gone = 410,
+  Error = 500,
   //Duplicate,
-  //Unauthorized,
+  Unauthorized = 401
 }
 
 export interface Result<T> {
