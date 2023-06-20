@@ -42,7 +42,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addItemToCart() {
-
+    this.snackBar.open('Not implemented.', 'Close', { duration: 3000 });
   }
 
   setQuantity(no: number) {
